@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}home{% endblock %}
+
+{% block content %}
+<h3>salam</h3>
+<hr>
+{% for todo in TODO %}
+<a href="{% url 'todo:detail_view' todo.slug %}">{{ todo }}</a>
+<a href="{% url 'todo:delete_todo' todo.id %}"><button class="btn btn-danger">delete</button></a>
+<a href="{% url 'todo:update_todo' todo.id %}"><button class="btn btn-primary">update</button></a>  <br><hr>
+{% endfor %}
+{% endblock %}
