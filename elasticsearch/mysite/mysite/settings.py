@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django_elasticsearch_dsl',
     'car',
     'rest_framework',
+    'new',
+    'django_elasticsearch_dsl_drf',
+    'dsl_drf',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +133,11 @@ ELASTICSEARCH_DSL={
     'default': {
         'hosts': 'localhost:9200'
     },
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
