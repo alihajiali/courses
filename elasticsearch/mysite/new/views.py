@@ -7,15 +7,20 @@ from .serializers import *
 from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
 
 class PostViews(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     def post(self, request):
         serdata = HashtagToPostSerializer(data = request.data)
         if serdata.is_valid():
-            hashtag_list = serdata.data["hashtag_list"]
-            post_list = []
+            print("*"*80)
+            s = PostDocument.search().filter("term", title='4')
+            for hit in s:
+                print("*"*80, hit.title)
+            # hashtag_list = serdata.data["hashtag_list"]
+            # post_list = []
             # for hashtag in hashtag_list:
-            search_results = PostDocument.search().query("match", hashtag='iran')
-            # post_list.append(search_results)
+            #     search_results = PostDocument.
+            #     search().query("match", hashtag = hashtag)
+            #     post_list.append(search_results)
             # print("*"*80, len(post_list))
             # print("*"*80, len(post_list))
         #     serializers = HashtagSerializer(data=search_results, many=True)
